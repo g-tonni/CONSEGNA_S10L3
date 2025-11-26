@@ -1,15 +1,13 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { Row, Col, Card, Spinner, Alert } from 'react-bootstrap'
 
-class FilmRow extends Component {
-  state = {
-    arrFilm: [],
-    loading: true,
-  }
+const FilmRow = function ({ filmName, titleRow }) {
+  const [arrFilm, setArrFilm] = useState([])
+  const [loading, setLoading] = useState([])
 
-  getFilm = function () {
+  const getFilm = function () {
     const filmURL = 'https://www.omdbapi.com/?apikey=da26c35d&s='
-    fetch(filmURL + this.props.filmName)
+    fetch(filmURL + filmName)
       .then((res) => {
         if (res.ok) {
           return res.json()
@@ -20,64 +18,51 @@ class FilmRow extends Component {
       .then((data) => {
         // console.log(data.Search)
 
-        this.setState({
-          arrFilm: data.Search,
-          loading: false,
-        })
+        setArrFilm(data.Search)
+        setLoading(false)
       })
       .catch((err) => {
         console.log('ERRORE: ', err)
-        this.setState({
-          loading: false,
-          error: true,
-        })
+        setLoading(false)
       })
   }
 
-  componentDidMount() {
-    this.getFilm()
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(getFilm, [])
 
-  render() {
-    return (
-      <Row className="text-light px-4">
-        <Col xs={12} className="p-0">
-          <h3>{this.props.titleRow}</h3>
-        </Col>
-        <Col xs={12} className="p-0 mt-3 mb-5">
-          <Row className="g-3">
-            {this.state.loading && (
-              <div className="text-center">
-                <Spinner animation="border" variant="light" />
-              </div>
-            )}
-            {this.state.error && (
-              <Alert className="bg-danger bg-opacity-50 text-light border border-1 border-danger">
-                Errore nel caricamento delle risorse
-              </Alert>
-            )}
-            {this.state.arrFilm.slice(0, 6).map((film) => {
-              return (
-                <Col xs={12} sm={6} md={4} lg={2} key={film.imdbID}>
-                  <Card className="h-100 border border-1 border-secondary bg-transparent overflow-hidden rounded-0">
-                    <div className="overflow-hidden h-75">
-                      <img src={film.Poster} alt="Film" className="w-100" />
-                    </div>
-                    <Card.Body className="text-light d-flex flex-column justify-content-center">
-                      <Card.Title className="text-truncate">
-                        {film.Title}
-                      </Card.Title>
-                      <Card.Text>{film.Year}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              )
-            })}
-          </Row>
-        </Col>
-      </Row>
-    )
-  }
+  return (
+    <Row className="text-light px-4">
+      <Col xs={12} className="p-0">
+        <h3>{titleRow}</h3>
+      </Col>
+      <Col xs={12} className="p-0 mt-3 mb-5">
+        <Row className="g-3">
+          {loading && (
+            <div className="text-center">
+              <Spinner animation="border" variant="light" />
+            </div>
+          )}
+          {arrFilm.slice(0, 6).map((film) => {
+            return (
+              <Col xs={12} sm={6} md={4} lg={2} key={film.imdbID}>
+                <Card className="h-100 border border-1 border-secondary bg-transparent overflow-hidden rounded-0">
+                  <div className="overflow-hidden h-75">
+                    <img src={film.Poster} alt="Film" className="w-100" />
+                  </div>
+                  <Card.Body className="text-light d-flex flex-column justify-content-center">
+                    <Card.Title className="text-truncate">
+                      {film.Title}
+                    </Card.Title>
+                    <Card.Text>{film.Year}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            )
+          })}
+        </Row>
+      </Col>
+    </Row>
+  )
 }
 
 export default FilmRow

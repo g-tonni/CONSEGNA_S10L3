@@ -5,11 +5,12 @@ import {
   Dropdown,
   DropdownButton,
 } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import logo from '../assets/netflix_logo.png'
 import account from '../assets/avatar.png'
 import accountKids from '../assets/kids_icon.png'
 
-function NetflixNavbar(props) {
+function NetflixNavbar() {
   return (
     <Navbar
       collapseOnSelect
@@ -24,43 +25,38 @@ function NetflixNavbar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link
-              href="#"
-              active={props.activeLink === 'Home' ? true : false}
-            >
+            <Link className="nav-link" to="/">
               Home
-            </Nav.Link>
-            <Nav.Link
-              href="#"
-              active={props.activeLink === 'TvShows' ? true : false}
-            >
+            </Link>
+            <Link className="nav-link" to="">
               TV Shows
-            </Nav.Link>
-            <Nav.Link href="#">Movies</Nav.Link>
-            <Nav.Link href="#">Recently Add</Nav.Link>
-            <Nav.Link href="#">My List</Nav.Link>
-            <Nav.Link
-              href="#"
-              active={props.activeLink === 'Settings' ? true : false}
-            >
+            </Link>
+            <Link className="nav-link" to="#">
+              Movies
+            </Link>
+            <Link className="nav-link" to="#">
+              Recently Add
+            </Link>
+            <Link className="nav-link" to="#">
+              My List
+            </Link>
+            <Link className="nav-link" to="/settings">
               Settings
-            </Nav.Link>
+            </Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#">
+            <Link className="nav-link" to="/search">
               <i className="bi bi-search"></i>
-            </Nav.Link>
-            <Nav.Link href="#">KIDS</Nav.Link>
-            <Nav.Link href="#">
+            </Link>
+            <Link className="nav-link" to="#">
+              KIDS
+            </Link>
+            <Link className="nav-link" to="#">
               <i className="bi bi-bell-fill"></i>
-            </Nav.Link>
-            <Nav.Link
-              href="#"
-              active={props.activeLink === 'Edit' ? true : false}
-              className="me-3"
-            >
+            </Link>
+            <Link className="nav-link me-3" to="/login">
               Edit Profile
-            </Nav.Link>
+            </Link>
             <DropdownButton
               id="dropdown-basic-button"
               title="Account"

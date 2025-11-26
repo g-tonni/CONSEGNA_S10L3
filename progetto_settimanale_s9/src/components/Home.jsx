@@ -1,19 +1,11 @@
-import { Component } from 'react'
-import NetflixNavbar from './NetflixNavbar'
-import NetflixFooter from './NetflixFooter'
 import NetflixMain from './NetflixMain'
 
-class Home extends Component {
-  render() {
-    return (
-      <>
-        <NetflixNavbar activeLink="Home" />
-        <NetflixMain />
-
-        <NetflixFooter />
-      </>
-    )
-  }
+const Home = function () {
+  return (
+    <>
+      <NetflixMain />
+    </>
+  )
 }
 
 export default Home

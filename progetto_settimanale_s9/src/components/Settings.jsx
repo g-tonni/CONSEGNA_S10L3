@@ -8,7 +8,6 @@ class Settings extends Component {
   render() {
     return (
       <>
-        <NetflixNavbar activeLink="Settings" />
         <Container className="my-5 px-4 px-md-0">
           <Row>
             <Col className="p-0">
@@ -136,7 +135,6 @@ class Settings extends Component {
             </Col>
           </Row>
         </Container>
-        <NetflixFooter />
       </>
     )
   }

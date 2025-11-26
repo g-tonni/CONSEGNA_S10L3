@@ -19,3 +19,8 @@ a.linkSettings {
 .bg-nav {
   background: linear-gradient(0deg, rgb(30, 30, 30) 0%, rgb(0, 0, 0) 88%);
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px;
+}
