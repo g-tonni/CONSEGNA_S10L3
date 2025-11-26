@@ -41,7 +41,7 @@ const Details = function () {
         <Col xs={12}>
           <Container>
             <Row className="py-5">
-              <Col xs={12} md={6}>
+              <Col xs={12} md={6} className="mb-5 m-md-0">
                 <img
                   src={film.Poster}
                   onError={(e) => {
