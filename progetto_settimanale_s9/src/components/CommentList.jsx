@@ -22,7 +22,7 @@ const CommentList = function ({ params }) {
         }
       })
       .then((data) => {
-        console.log('COMMENTI', data)
+        // console.log('COMMENTI', data)
         setComments(data)
       })
       .catch((err) => {
@@ -54,7 +54,7 @@ const CommentList = function ({ params }) {
           })}
         </ListGroup>
       ) : (
-        <div className="border border-1 border-light p-4">
+        <div className="border border-1 border-light p-4 mb-5">
           <p className="m-0">
             OOPS! <br /> Non ci sono recensioni per questo film
           </p>

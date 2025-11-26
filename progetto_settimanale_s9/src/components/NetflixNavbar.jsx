@@ -5,12 +5,14 @@ import {
   Dropdown,
   DropdownButton,
 } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/netflix_logo.png'
 import account from '../assets/avatar.png'
 import accountKids from '../assets/kids_icon.png'
 
 function NetflixNavbar() {
+  const location = useLocation()
+
   return (
     <Navbar
       collapseOnSelect
@@ -25,7 +27,12 @@ function NetflixNavbar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link className="nav-link" to="/">
+            <Link
+              className={
+                'nav-link ' + (location.pathname === '/' ? 'active' : '')
+              }
+              to="/"
+            >
               Home
             </Link>
             <Link className="nav-link" to="">
@@ -40,12 +47,23 @@ function NetflixNavbar() {
             <Link className="nav-link" to="#">
               My List
             </Link>
-            <Link className="nav-link" to="/settings">
+            <Link
+              className={
+                'nav-link ' +
+                (location.pathname === '/settings' ? 'active' : '')
+              }
+              to="/settings"
+            >
               Settings
             </Link>
           </Nav>
           <Nav>
-            <Link className="nav-link" to="/search">
+            <Link
+              className={
+                'nav-link ' + (location.pathname === '/search' ? 'active' : '')
+              }
+              to="/search"
+            >
               <i className="bi bi-search"></i>
             </Link>
             <Link className="nav-link" to="#">
@@ -54,7 +72,13 @@ function NetflixNavbar() {
             <Link className="nav-link" to="#">
               <i className="bi bi-bell-fill"></i>
             </Link>
-            <Link className="nav-link me-3" to="/login">
+            <Link
+              className={
+                'nav-link me-3 ' +
+                (location.pathname === '/login' ? 'active' : '')
+              }
+              to="/login"
+            >
               Edit Profile
             </Link>
             <DropdownButton

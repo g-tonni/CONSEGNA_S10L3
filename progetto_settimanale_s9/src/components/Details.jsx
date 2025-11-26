@@ -21,7 +21,7 @@ const Details = function () {
         }
       })
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         setFilm(data)
       })
       .catch((err) => {

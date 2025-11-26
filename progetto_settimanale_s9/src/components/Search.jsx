@@ -27,7 +27,7 @@ const Search = function () {
         }
       })
       .then((data) => {
-        console.log(data.Search)
+        // console.log(data.Search)
 
         setArrFilm(data.Search)
         setLoading(false)
