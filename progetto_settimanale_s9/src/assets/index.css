@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.731);
+}
+
+button {
+  border-radius: 0 !important;
+}
+
+a.linkSettings {
+  color: #5186c9;
+  display: block;
+}
+
+.bg-dark {
+  background-color: rgb(30, 30, 30) !important;
+}
+
+.bg-nav {
+  background: linear-gradient(0deg, rgb(30, 30, 30) 0%, rgb(0, 0, 0) 88%);
+}
